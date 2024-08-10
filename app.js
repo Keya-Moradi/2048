@@ -55,6 +55,10 @@ function initGame() {
     renderGrid();
 }
 
+function updateScoreDisplay() {
+    scoreDisplay.textContent = score;
+}
+
 // Function to add a new tile to the grid
 // 1. Finding all the empty cells (cells with a value of 0) in the grid and storing their row and column indices in the emptyCells array.
 // 2. If there are any empty cells, we choose one randomly using Math.random().
@@ -165,6 +169,7 @@ function moveUp() {
                 grid[row + 1][col] = 0; // Empty the cell below
                 score += grid[row][col]; // Update the score
                 moved = true;
+                updateScoreDisplay(); // Call the function to update the score display
             }
         }
     }
@@ -190,6 +195,7 @@ function moveDown() {
                 grid[row - 1][col] = 0;
                 score += grid[row][col];
                 moved = true;
+                updateScoreDisplay(); // Call the function to update the score display
             }
         }
     }
@@ -216,6 +222,7 @@ function moveLeft() {
                 grid[row][col + 1] = 0;
                 score += grid[row][col];
                 moved = true;
+                updateScoreDisplay(); // Call the function to update the score display
             }
         }
     }
@@ -242,6 +249,7 @@ function moveRight() {
                 grid[row][col - 1] = 0;
                 score += grid[row][col];
                 moved = true;
+                updateScoreDisplay(); // Call the function to update the score display
             }
         }
     }
@@ -283,3 +291,4 @@ function checkWinLose() {
     // If we reach this point, there are no empty cells or potential merges, so the player loses
     document.getElementById('lose-message').style.display = 'block'; // Show the lose message
 }
+
