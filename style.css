@@ -25,7 +25,7 @@ body {
   width: 48%; /* Set the width to 48% each, leaving a small gap in between */
   box-sizing: border-box; /* Include padding and border in the total width */
   margin: 0; /* Reset margin to avoid any default values */
-  background-color: #4caf50;
+  background-color: #9663de;
   color: white;
   text-decoration: none;
   border-radius: 5px;
