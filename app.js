@@ -18,7 +18,7 @@ instructionsButton.addEventListener('click', () => {
 });
 
 // Start the game when "Lets Play!" is clicked
-// Select the link with href="#game-board"
+    // Select the link with href="#game-board"
 const startButton = document.querySelector('#welcome-screen a[href="#game-board"]');
 startButton.addEventListener('click', () => {
     // Hide the welcome screen
@@ -37,59 +37,75 @@ startButton.addEventListener('click', () => {
     // 3. Reset the score to 0 and update the score display.4. 
     // 4. Call the renderGrid function to display the initial grid on the screen.
 function initGame() {
-    function initGame() {
-        // Create the 4x4 grid
-        for (let i = 0; i < 4; i++) {
-            let row = [];
-            for (let j = 0; j < 4; j++) {
-                row.push(0); // Initialize each cell with 0 (empty)
-            }
-            grid.push(row);
+    // Create the 4x4 grid
+    for (let i = 0; i < 4; i++) {
+        let row = [];
+        for (let j = 0; j < 4; j++) {
+            row.push(0); // Initialize each cell with 0 (empty)
         }
-        // Add two initial tiles
-        addTile();
-        addTile();
-        // Update the score display
-        score = 0;
-        scoreDisplay.textContent = score;
-        // Render the initial grid
-        renderGrid();
+        grid.push(row);
     }
-    // Function to add a new tile to the grid
-        // Finding all the empty cells (cells with a value of 0) in the grid and storing their row and column indices in the emptyCells array.
-        // If there are any empty cells, we choose one randomly using Math.random().
-        // We then set the value of the chosen cell to either 2 or 4, with a 90% probability of it being 2.
-    function addTile() {
-        // Find all empty cells in the grid
-        const emptyCells = [];
-        for (let i = 0; i < 4; i++) {
-            for (let j = 0; j < 4; j++) {
-                if (grid[i][j] === 0) {
-                    emptyCells.push({ row: i, col: j });
-                }
-            }
-        }
+    // Add two initial tiles
+    addTile();
+    addTile();
+    // Update the score display
+    score = 0;
+    scoreDisplay.textContent = score;
+    // Render the initial grid
+    renderGrid();
+}
 
-        // If there are empty cells, choose one randomly
-        if (emptyCells.length > 0) {
-            const randomIndex = Math.floor(Math.random() * emptyCells.length);
-            const { row, col } = emptyCells[randomIndex];
-
-            // Set the value of the chosen cell to either 2 or 4 (with a higher probability for 2)
-            // Generate a random number
-            let randomValue = Math.random();
-
-            // Check if the random number is less than 0.9
-            if (randomValue < 0.9) {
-                // 90% chance to set the tile to 2
-                grid[row][col] = 2;
-            } else {
-                // 10% chance to set the tile to 4
-                grid[row][col] = 4;
+// Function to add a new tile to the grid
+    // 1. Finding all the empty cells (cells with a value of 0) in the grid and storing their row and column indices in the emptyCells array.
+    // 2. If there are any empty cells, we choose one randomly using Math.random().
+    // 3. We then set the value of the chosen cell to either 2 or 4, with a 90% probability of it being 2.
+function addTile() {
+    // Find all empty cells in the grid
+    const emptyCells = [];
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            if (grid[i][j] === 0) {
+                emptyCells.push({ row: i, col: j });
             }
         }
     }
-    // Function to render the grid to the DOM
-    function renderGrid() {
+    // If there are empty cells, choose one randomly
+    if (emptyCells.length > 0) {
+        const randomIndex = Math.floor(Math.random() * emptyCells.length);
+        const { row, col } = emptyCells[randomIndex];
+
+        // Set the value of the chosen cell to either 2 or 4 (with a higher probability for 2)
+        // Generate a random number
+        let randomValue = Math.random();
+
+        // Check if the random number is less than 0.9
+        if (randomValue < 0.9) {
+            // 90% chance to set the tile to 2
+            grid[row][col] = 2;
+        } else {
+            // 10% chance to set the tile to 4
+            grid[row][col] = 4;
+        }
+    }
+}
+
+// Function to render the grid to the DOM
+    // 1. Clearing the gridContainer to remove any previously rendered tiles.
+    // 2. Looping through the grid array and creating a new div element for each tile.
+    // 3. Adding the class "tile" to each div so we can style it with CSS.
+    // 4. If the tile value is greater than 0 (i.e., not empty), we set the textContent of the div to the tile value.
+    // 5. Appending each tile div to the gridContainer.
+function renderGrid() {
+    gridContainer.innerHTML = ''; // Clear the grid container
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            const tileValue = grid[i][j];
+            const tile = document.createElement('div');
+            tile.classList.add('tile');
+            if (tileValue > 0) {
+                tile.textContent = tileValue;
+            }
+            gridContainer.appendChild(tile);
+        }
     }
 }

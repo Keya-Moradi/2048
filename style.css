@@ -11,6 +11,7 @@ body {
 #welcome-screen {
     text-align: center;
     padding: 20px;
+    margin-bottom: 30px;
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -40,7 +41,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
+    text-align: left;
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
@@ -50,7 +51,7 @@ body {
 }
 
 #game-board {
-    background-color: #bbada0;
+    background-color: #69f9f2;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
