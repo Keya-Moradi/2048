@@ -4,7 +4,7 @@ A sliding puzzle game where the player moves numbered tiles on a grid to combine
 
 # Keya's 2048 Game
 
-![Welcome Screen](.vscode/images/welcome_screen.png)
+![Welcome Screen](https://keya-moradi.github.io/2048/.vscode/images/welcome_screen.png)
 
 ## Background Information
 
