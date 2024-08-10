@@ -44,6 +44,87 @@ A sliding puzzle game where the player moves numbered tiles on a grid to combine
 - CSS
 - JavaScript
 
+### User Stories
+
+As a user, I want to:
+
+- **See a welcome screen on the website** with two options:
+  - The first link [titled “Game Instructions”] takes the user to a page with instructions on how to play the game, with some screenshots of the actual game.
+  - The second link takes the user to the game [titled “Let's play!”].
+
+- **See a 4x4 grid on the screen** to play the game with vibrant colors.
+  - Two tiles at random spots start with the number “2” or “4” displayed on them.
+  - When the game begins, a new tile will appear and fall on one of the existing tiles, allowing the user to start engaging with them and attempt to merge them.
+  - A new tile will fall from the ceiling of the grid every time there is a successful merge.
+  - The user will see the currently selected tile shaded in grey with reasonable opacity so as not to overshadow the displayed value of the tile.
+
+- **Click to select a tile**, and then use the arrow keys [up, down, left, right] to merge it in the direction of an adjacent tile with a matching number to achieve a higher score.
+  - If the number doesn’t match the direction the user selects, the tile trying to merge will shake left and right to signal to the user that the move is not possible.
+  - If the tile is eligible to merge, the tiles will double their displayed value and merge into one.
+  - If there are tiles beneath where they are merging, the tile will simply display the new value.
+  - If there are no tiles beneath where they merge, the new combined tile will fall until it hits the floor or lands on top of an existing tile.
+
+- **See my current score** at the top of the game to track my progress. [titled: “Current Score”]
+
+- **See a message when I win** by reaching the 2048 tile to know I have completed the game. [titled: “You Win!”]
+
+- **See a message when I lose** to understand when the game ends and can restart. [titled “Game Over!”].
+
+- Have a **button to restart the game** so I can play again without refreshing the page. [titled “Restart”]
+
+- Have a **button that takes me back to the welcome screen**.
+
+### Pseudocode
+
+#### Define constants and variables
+
+- Define constants for the grid size and initial tile values.
+- Define variables for the game state, including the grid, score, and game status (win/lose).
+- Define variables for valid/invalid merges and selected tiles.
+
+#### Initialize the game
+
+- **Function `init()`:**
+  - Create a 4x4 grid initialized with zeros.
+  - Add two initial tiles with values of 2 or 4 at random positions.
+  - Set the score to zero.
+  - Set the game status to active.
+  - Render the initial grid and score to the DOM.
+
+#### Render the game state
+
+- **Function `render()`:**
+  - Loop through the grid and update the DOM with current tile values.
+  - Display the current score.
+  - Display win/lose messages if applicable.
+
+#### Handle user input
+
+- Add event listeners for arrow keys:
+  - **Function `handleMove(direction)`:**
+    - Determine which current tile the mouse click is selecting.
+    - Determine the direction of movement (up, down, left, right).
+    - Slide tiles in the specified direction.
+    - Combine tiles with the same value.
+    - Shake the selected tile left and right if the merge is invalid and unsuccessful.
+    - Add a new tile with a value of 2 or 4 at a random empty position.
+    - Update the score.
+    - Check for win/lose conditions.
+
+#### Check win/lose conditions
+
+- **Function `checkWinLose()`:**
+  - Check if a tile with a value of 2048 is present for a win.
+  - Check if no moves are possible for a loss.
+  - Update the game status accordingly.
+
+#### Restart the game
+
+- Add an event listener to the "Restart" button:
+  - **Function `restartGame()`:**
+    - Reset the game state to the initial conditions.
+    - Re-render the game.
+
 ### Next Steps
 
 Planned future enhancements:
