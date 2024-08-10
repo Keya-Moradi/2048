@@ -17,6 +17,20 @@ instructionsButton.addEventListener('click', () => {
     gameInstructions.style.display = (gameInstructions.style.display === 'none') ? 'block' : 'none';
 });
 
+// Restart the game when the "Restart" button is clicked
+restartButton.addEventListener('click', () => {
+    // Reset the game state
+    grid = [];
+    score = 0;
+  
+    // Hide win/lose messages
+    document.getElementById('win-message').style.display = 'none';
+    document.getElementById('lose-message').style.display = 'none';
+  
+    // Re-initialize the game
+    initGame();
+  });
+
 // Start the game when "Lets Play!" is clicked
 // Select the link with href="#game-board"
 const startButton = document.querySelector('#welcome-screen a[href="#game-board"]');
