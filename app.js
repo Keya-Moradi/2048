@@ -186,7 +186,7 @@ document.addEventListener('keydown', (event) => {
 // Game Logic: 
 // 1. Movement
 // 2. Win/Lose
-// 3. Integrating the Movement and Win/Lose with adding tiles and updating the score accordingly
+// 3. Updating the score accordingly
 
 // Functions to handle movement in each direction
 // Does NOT account for more complex scenarios, such as:
