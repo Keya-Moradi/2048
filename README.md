@@ -34,6 +34,8 @@ A sliding puzzle game where the player moves numbered tiles on a grid to combine
 
 - [Original 2048 Game by Gabriele Cirulli](https://github.com/gabrielecirulli/2048)
 - [Game Design Inspiration Video](https://www.youtube.com/watch?v=wOVEe9eawXc)
+- [Chat GPT](https://chatgpt.com/)
+- [Gemini](https://gemini.google.com/app)
 
 ### Technologies Used
 
