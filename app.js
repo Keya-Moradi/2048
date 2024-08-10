@@ -32,10 +32,10 @@ startButton.addEventListener('click', () => {
 });
 
 // Function to initialize the game:
-// 1. Create the 4x4 grid by initializing a 2D array called a grid with zeros.
-// 2. Call the addTile function twice to add two initial tiles.
-// 3. Reset the score to 0 and update the score display.4. 
-// 4. Call the renderGrid function to display the initial grid on the screen.
+    // 1. Create the 4x4 grid by initializing a 2D array called a grid with zeros.
+    // 2. Call the addTile function twice to add two initial tiles.
+    // 3. Reset the score to 0 and update the score display.4. 
+    // 4. Call the renderGrid function to display the initial grid on the screen.
 function initGame() {
     function initGame() {
         // Create the 4x4 grid
@@ -56,6 +56,9 @@ function initGame() {
         renderGrid();
     }
     // Function to add a new tile to the grid
+        // Finding all the empty cells (cells with a value of 0) in the grid and storing their row and column indices in the emptyCells array.
+        // If there are any empty cells, we choose one randomly using Math.random().
+        // We then set the value of the chosen cell to either 2 or 4, with a 90% probability of it being 2.
     function addTile() {
         // Find all empty cells in the grid
         const emptyCells = [];
@@ -73,7 +76,17 @@ function initGame() {
             const { row, col } = emptyCells[randomIndex];
 
             // Set the value of the chosen cell to either 2 or 4 (with a higher probability for 2)
-            grid[row][col] = Math.random() < 0.9 ? 2 : 4;
+            // Generate a random number
+            let randomValue = Math.random();
+
+            // Check if the random number is less than 0.9
+            if (randomValue < 0.9) {
+                // 90% chance to set the tile to 2
+                grid[row][col] = 2;
+            } else {
+                // 10% chance to set the tile to 4
+                grid[row][col] = 4;
+            }
         }
     }
     // Function to render the grid to the DOM
