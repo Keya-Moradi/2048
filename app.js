@@ -25,7 +25,6 @@ instructionsButton.addEventListener('click', () => {
     }
 });
 
-
 // Restart the game when the "Restart" button is clicked
 restartButton.addEventListener('click', () => {
     // Reset the game state
