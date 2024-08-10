@@ -14,7 +14,7 @@ A sliding puzzle game where the player moves numbered tiles on a grid to combine
 
 ### Link to Deployed Game
 
-[Link to Keya's 2048 Game](#)  <!-- Replace with your actual deployed URL -->
+[Link to Keya's 2048 Game](https://keya-moradi.github.io/2048/)
 
 ### How to Play
 
