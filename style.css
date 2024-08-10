@@ -1,23 +1,14 @@
+body {
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
 #welcome-screen {
-    text-align: center;
-    padding: 20px;
-    background-color: #fff; /* White background for the welcome screen */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-#welcome-screen a {
-    display: block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #4CAF50; /* Green button color */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-#game-instructions {
-    display: none; /* Hide the instructions initially */
     text-align: center;
     padding: 20px;
     background-color: #fff;
@@ -25,8 +16,40 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+#welcome-screen button,
+#welcome-screen a {
+    display: inline-block; /* Try inline-block */
+    margin-top: 10px;
+    padding: 10px 20px; /* Explicitly set padding */
+    width: 48%; /* Set the width to 48% each, leaving a small gap in between */
+    box-sizing: border-box; /* Include padding and border in the total width */
+    margin: 0; /* Reset margin to avoid any default values */
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 16px; /* Ensure same font size */
+    line-height: 1.5; /* Ensure same line-height */
+}
+
+#game-instructions {
+    display: none; /* Hidden by default */
+    position: absolute; /* Position it on top of other content */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0   
+ 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Make sure it's on top */
+}
+
 #game-board {
-    display: none; /* Hide the game board initially */
     background-color: #bbada0;
     padding: 20px;
     border-radius: 10px;
@@ -34,8 +57,9 @@
 }
 
 #grid-container {
+    display: none;
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Create a 4x4 grid */
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
 }
 
