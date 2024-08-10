@@ -1,78 +1,94 @@
 body {
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f0f0f0;
 }
 
 #welcome-screen {
-    text-align: center;
-    padding: 20px;
-    margin-bottom: 30px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #welcome-screen button,
 #welcome-screen a {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px; /* Explicitly set padding */
-    width: 48%; /* Set the width to 48% each, leaving a small gap in between */
-    box-sizing: border-box; /* Include padding and border in the total width */
-    margin: 0; /* Reset margin to avoid any default values */
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    border: none;
-    text-align: center;
-    font-size: 16px; /* Ensure same font size */
-    line-height: 1.5; /* Ensure same line-height */
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px; /* Explicitly set padding */
+  width: 48%; /* Set the width to 48% each, leaving a small gap in between */
+  box-sizing: border-box; /* Include padding and border in the total width */
+  margin: 0; /* Reset margin to avoid any default values */
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  font-size: 16px; /* Ensure same font size */
+  line-height: 1.5; /* Ensure same line-height */
 }
 
 #game-instructions {
-    display: none; /* Hidden by default */
-    position: absolute; /* Position it on top of other content */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: left;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0   
- 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 10; /* Make sure it's on top */
+  display: none; /* Hidden by default */
+  position: absolute; /* Position it on top of other content */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0   2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10; /* Make sure it's on top */
 }
 
 #game-board {
-    background-color: #69f9f2;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #69f9f2;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #grid-container {
-    display: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
+  display: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
 }
 
 .tile {
-    background-color: #89c2f1;
-    height: 80px;
-    width: 80px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    font-weight: bold;
-    color: #a170ef;
+  background-color: #89c2f1;
+  height: 80px;
+  width: 80px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  font-weight: bold;
+  color: #a170ef;
+}
+
+#win-message,
+#lose-message {
+  display: none;
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(247, 142, 116, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 11;
+  font-size: 24px;
+  font-weight: bold;
 }
