@@ -18,7 +18,7 @@ instructionsButton.addEventListener('click', () => {
 });
 
 // Start the game when "Lets Play!" is clicked
-    // Select the link with href="#game-board"
+// Select the link with href="#game-board"
 const startButton = document.querySelector('#welcome-screen a[href="#game-board"]');
 startButton.addEventListener('click', () => {
     // Hide the welcome screen
@@ -90,11 +90,11 @@ function addTile() {
 }
 
 // Function to render the grid to the DOM
-    // 1. Clearing the gridContainer to remove any previously rendered tiles.
-    // 2. Looping through the grid array and creating a new div element for each tile.
-    // 3. Adding the class "tile" to each div so we can style it with CSS.
-    // 4. If the tile value is greater than 0 (i.e., not empty), we set the textContent of the div to the tile value.
-    // 5. Appending each tile div to the gridContainer.
+// 1. Clearing the gridContainer to remove any previously rendered tiles.
+// 2. Looping through the grid array and creating a new div element for each tile.
+// 3. Adding the class "tile" to each div so we can style it with CSS.
+// 4. If the tile value is greater than 0 (i.e., not empty), we set the textContent of the div to the tile value.
+// 5. Appending each tile div to the gridContainer.
 function renderGrid() {
     gridContainer.innerHTML = ''; // Clear the grid container
     for (let i = 0; i < 4; i++) {
@@ -108,4 +108,47 @@ function renderGrid() {
             gridContainer.appendChild(tile);
         }
     }
+}
+
+// Function to handle keyboard events
+// Handle user input (arrow keys)
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowUp') {
+        moveUp();
+    } else if (event.key === 'ArrowDown') {
+        moveDown();
+    } else if (event.key === 'ArrowLeft') {
+        moveLeft();
+    } else
+        if (event.key === 'ArrowRight') {
+            moveRight();
+
+        }
+
+    // After each move, check for win/lose conditions and add a new tile
+    checkWinLose();
+    addTile();
+    renderGrid(); // Re-render the grid to reflect the changes
+});
+
+// Functions to handle movement in each direction
+function moveUp() {
+
+}
+
+function moveDown() {
+
+}
+
+function moveLeft() {
+
+}
+
+function moveRight() {
+
+}
+
+// Function to check for win/lose conditions
+function checkWinLose() {
+
 }

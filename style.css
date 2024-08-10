@@ -65,7 +65,7 @@ body {
 }
 
 .tile {
-    background-color: #cdc1b4;
+    background-color: #89c2f1;
     height: 80px;
     width: 80px;
     border-radius: 5px;
@@ -74,5 +74,5 @@ body {
     justify-content: center;
     font-size: 30px;
     font-weight: bold;
-    color: #776e65;
+    color: #a170ef;
 }
