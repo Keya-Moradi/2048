@@ -1,0 +1,53 @@
+#welcome-screen {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff; /* White background for the welcome screen */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#welcome-screen a {
+    display: block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Green button color */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#game-instructions {
+    display: none; /* Hide the instructions initially */
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#game-board {
+    display: none; /* Hide the game board initially */
+    background-color: #bbada0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Create a 4x4 grid */
+    grid-gap: 10px;
+}
+
+.tile {
+    background-color: #cdc1b4;
+    height: 80px;
+    width: 80px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: bold;
+    color: #776e65;
+}

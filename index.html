@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keya's 2048 Game</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="welcome-screen">
+      <h1>Welcome to Keya's 2048 Game!</h1>
+      <a href="#game-instructions">Game Instructions</a>
+      <a href="#game-board">Lets Play</a>
+    </div>
+    <div id="game-instructions">
+      <h2>How to Play 2048</h2>
+    </div>
+    <div id="game-board">
+        <div id="grid-container">
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            <div class="tile"></div>
+            </div>
+      <div id="score-container">
+        <p>Current Score: <span id="score">0</span></p>
+      </div>
+
+      <button id="restart-button">Restart</button>
+
+      <a href="#welcome-screen" id="back-to-welcome">Back to Welcome</a>
+    </div>
+
+    <script src="app.js" defer></script>
+  </body>
 </html>
