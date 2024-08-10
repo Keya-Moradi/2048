@@ -131,9 +131,44 @@ document.addEventListener('keydown', (event) => {
     renderGrid(); // Re-render the grid to reflect the changes
 });
 
-// Functions to handle movement in each direction
-function moveUp() {
+// Game Logic: 
+    // 1. Movement
+    // 2. Win/Lose
+    // 3. Integrating the Movement and Win/Lose with adding tiles and updating the score accordingly
 
+// Functions to handle movement in each direction
+// Does NOT account for more complex scenarios, such as:
+    // A. Merging multiple tiles in a row
+    // B. Preventing tiles from merging twice in the same move.
+
+// For Move UP
+    // 1. Loop through each column and then each row (from top to bottom).
+    // 2. If the current tile is empty, we look for the next non-empty tile below it and move it up.
+    // 3. If the current tile can merge with the one below it (i.e., they have the same value), we double the value of the current tile, empty the cell below, and update the score.
+    // 4. We keep track of whether any tiles moved using the moved flag.
+    
+function moveUp() {
+    let moved = false; // Flag to track if any tiles moved
+    for (let col = 0; col < 4; col++) {
+      for (let row = 0; row < 3; row++) {
+        if (grid[row][col] === 0) { // If the current tile is empty
+          for (let nextRow = row + 1; nextRow < 4; nextRow++) {
+            if (grid[nextRow][col] !== 0) { // Find the next non-empty tile below
+              grid[row][col] = grid[nextRow][col]; // Move it up
+              grid[nextRow][col] = 0; // Empty the original cell
+              moved = true;
+              break; // Stop searching once a tile is moved
+            }
+          }
+        } else if (grid[row][col] === grid[row + 1][col]) { // If the current tile can merge with the one below
+          grid[row][col] *= 2; // Double the value
+          grid[row + 1][col] = 0; // Empty the cell below
+          score += grid[row][col]; // Update the score
+          moved = true;
+        }
+      }
+    }
+    return moved; // Return true if any tiles moved
 }
 
 function moveDown() {

@@ -19,7 +19,7 @@ body {
 
 #welcome-screen button,
 #welcome-screen a {
-    display: inline-block; /* Try inline-block */
+    display: inline-block;
     margin-top: 10px;
     padding: 10px 20px; /* Explicitly set padding */
     width: 48%; /* Set the width to 48% each, leaving a small gap in between */
