@@ -57,7 +57,24 @@ function initGame() {
     }
     // Function to add a new tile to the grid
     function addTile() {
+        // Find all empty cells in the grid
+        const emptyCells = [];
+        for (let i = 0; i < 4; i++) {
+            for (let j = 0; j < 4; j++) {
+                if (grid[i][j] === 0) {
+                    emptyCells.push({ row: i, col: j });
+                }
+            }
+        }
 
+        // If there are empty cells, choose one randomly
+        if (emptyCells.length > 0) {
+            const randomIndex = Math.floor(Math.random() * emptyCells.length);
+            const { row, col } = emptyCells[randomIndex];
+
+            // Set the value of the chosen cell to either 2 or 4 (with a higher probability for 2)
+            grid[row][col] = Math.random() < 0.9 ? 2 : 4;
+        }
     }
     // Function to render the grid to the DOM
     function renderGrid() {
