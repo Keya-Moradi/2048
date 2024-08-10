@@ -7,6 +7,8 @@ const scoreDisplay = document.getElementById('score');
 const restartButton = document.getElementById('restart-button');
 const instructionsButton = document.getElementById('show-instructions');
 const gameInstructions = document.getElementById('game-instructions');
+const backToWelcomeButtonFromInstructions = document.getElementById('back-to-welcome-from-instructions');
+const backToWelcomeButtonFromGame = document.getElementById('back-to-welcome-from-game');
 
 // Set up game variables
 let grid = []; // 2D array to represent the game board
@@ -15,21 +17,53 @@ let score = 0;
 // Show/hide game instructions
 instructionsButton.addEventListener('click', () => {
     gameInstructions.style.display = (gameInstructions.style.display === 'none') ? 'block' : 'none';
+    // Show/hide the "Back to Welcome Page" button in the instructions
+    if (gameInstructions.style.display === 'block') {
+        backToWelcomeButtonFromInstructions.style.display = 'block';
+    } else {
+        backToWelcomeButtonFromInstructions.style.display = 'none';
+    }
 });
+
 
 // Restart the game when the "Restart" button is clicked
 restartButton.addEventListener('click', () => {
     // Reset the game state
     grid = [];
     score = 0;
-  
+
     // Hide win/lose messages
     document.getElementById('win-message').style.display = 'none';
     document.getElementById('lose-message').style.display = 'none';
-  
+
     // Re-initialize the game
     initGame();
-  });
+});
+
+// Handle clicks on both buttons
+backToWelcomeButtonFromInstructions.addEventListener('click', () => {
+    // Hide the game board and instructions
+    gameInstructions.style.display = 'none';
+
+    // Show the welcome screen
+    welcomeScreen.style.display = 'block';
+
+    // Hide both "Back to Welcome Page" buttons
+    backToWelcomeButtonFromInstructions.style.display = 'none';
+    backToWelcomeButtonFromGame.style.display = 'none';
+});
+
+backToWelcomeButtonFromGame.addEventListener('click', () => {
+    // Hide the game board and instructions
+    gameInstructions.style.display = 'none';
+
+    // Show the welcome screen
+    welcomeScreen.style.display = 'block';
+
+    // Hide both "Back to Welcome Page" buttons
+    backToWelcomeButtonFromInstructions.style.display = 'none';
+    backToWelcomeButtonFromGame.style.display = 'none';
+});
 
 // Start the game when "Lets Play!" is clicked
 // Select the link with href="#game-board"
@@ -37,10 +71,10 @@ const startButton = document.querySelector('#welcome-screen a[href="#game-board"
 startButton.addEventListener('click', () => {
     // Hide the welcome screen
     welcomeScreen.style.display = 'none';
-    // Show the game board
-    gameBoard.style.display = 'block';
     // Show the grid
     gridContainer.style.display = 'grid';
+    // Show the "Back to Welcome Page" button on the game board
+    backToWelcomeButtonFromGame.style.display = 'block';
     // Initialize the game
     initGame();
 });
