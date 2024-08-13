@@ -21,27 +21,70 @@
     <div id="game-instructions">
       <h2>How to Play 2048</h2>
       <p>
-        1. Click to select a tile, and then use the arrow keys [up, down, left,
-        right] to merge it in the direction of an adjacent tile with a matching
-        number to achieve a higher score.
+        Welcome to the 2048 game! Your goal is to combine tiles with the same
+        number to create a tile with the value of 2048.
       </p>
-      <p>
-        2. If the number doesn’t match the direction the user selects, the tile
-        trying to merge will shake left and right to signal to the user that the
-        move is not possible.
-      </p>
-      <p>
-        3. If the tile is eligible to merge, the tiles will double their
-        displayed value and merge into one.
-      </p>
-      <p>
-        4. If there are tiles beneath where they are merging, the tile will
-        simply display the new value.
-      </p>
-      <p>
-        5. If there are no tiles beneath where they merge, the new combined tile
-        will fall until it hits the floor or lands on top of an existing tile.
-      </p>
+      <h3>Game Setup</h3>
+      <ul>
+        <li>
+          The game starts with a 4x4 grid, initially containing two tiles, each
+          showing a number (either 2 or 4).
+        </li>
+        <li>
+          New tiles will appear after every move you make, in a random empty
+          position on the grid.
+        </li>
+      </ul>
+      <h3>How to Play</h3>
+      <ol>
+        <li>
+          <strong>Objective</strong>: Slide numbered tiles on a grid to combine
+          them and create a tile with the number 2048.
+        </li>
+        <li>
+          <strong>Controls</strong>: Use the <strong>arrow keys</strong> on your
+          keyboard to move tiles in the corresponding direction (up, down, left,
+          right).<br />
+          <em>Note</em>: Only the arrow keys are functional for gameplay; no
+          other keys, such as the space bar, affect the game.
+        </li>
+        <li>
+          <strong>Merging Tiles</strong>: When two tiles with the same number
+          collide while moving, they merge into one tile with a value equal to
+          their sum (e.g., two tiles with '2' merge to become a '4'). Each
+          successful merge increases your score by the value of the merged tile.
+        </li>
+        <li>
+          <strong>Game Progression</strong>: After every move, a new tile with a
+          value of either 2 or 4 will randomly appear on an empty spot on the
+          grid. The game ends if there are no empty spaces left on the grid and
+          no possible merges.
+        </li>
+        <li>
+          <strong>Winning the Game</strong>: The goal is to create a tile with
+          the number 2048 through merging. When you achieve a tile of 2048, a
+          "You Win!" message will appear.
+        </li>
+        <li>
+          <strong>Game Over</strong>: If the grid is full and no more merges can
+          be made, the game will display a "Game Over!" message.
+        </li>
+      </ol>
+      <h3>Additional Features</h3>
+      <ul>
+        <li>
+          You can restart the game at any time by clicking the
+          <strong>Restart</strong> button, which will reset the grid and score
+        </li>
+        <li>
+          Hitting the <strong>Space Bar</strong> key on your keyboard can restart the game (mid-game), or escape the instructions page, or generate new tiles at the beginning of the game if you're not happy with the tiles. 
+        </li>
+        <li>
+          To return to the welcome page, click the
+          <strong>Back to Welcome Page</strong> button.
+        </li>
+      </ul>
+      <p>Enjoy playing and good luck reaching 2048!</p>
       <!-- Button to navigate back to the welcome page -->
       <button id="back-to-welcome-from-instructions">
         Back to Welcome Page
@@ -49,7 +92,7 @@
     </div>
 
     <!-- Main game board where the 2048 game is played -->
-    <div id="game-board">
+    <div id="game-board" style="display: none">
       <!-- Messages displayed for win or lose conditions, hidden by default -->
       <div id="win-message" style="display: none">You Win!</div>
       <div id="lose-message" style="display: none">Game Over!</div>

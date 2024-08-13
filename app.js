@@ -47,9 +47,6 @@ backToWelcomeButtonFromInstructions.addEventListener('click', () => {
     // Show the welcome screen
     welcomeScreen.style.display = 'block';
 
-    // Show the game board
-    gameBoard.style.display = 'block';
-
     // Hide both "Back to Welcome Page" buttons
     backToWelcomeButtonFromInstructions.style.display = 'none';
     backToWelcomeButtonFromGame.style.display = 'none';
@@ -61,14 +58,11 @@ backToWelcomeButtonFromInstructions.addEventListener('click', () => {
 
 // Handle clicks on the "Back to Welcome Page" button from the game
 backToWelcomeButtonFromGame.addEventListener('click', () => {
-    // Hide the game instructions
-    gameInstructions.style.display = 'none';
+    // Hide the game board
+    gameBoard.style.display = 'none';
 
     // Show the welcome screen
     welcomeScreen.style.display = 'block';
-
-    // Show the game board
-    gameBoard.style.display = 'block';
 
     // Hide both "Back to Welcome Page" buttons
     backToWelcomeButtonFromInstructions.style.display = 'none';
@@ -85,15 +79,14 @@ backToWelcomeButtonFromGame.addEventListener('click', () => {
 // Start the game when "Let's Play!" is clicked
 // Select the link with href="#game-board"
 const startButton = document.querySelector('#welcome-screen a[href="#game-board"]');
-startButton.addEventListener('click', () => {
+startButton.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
     // Hide the welcome screen
     welcomeScreen.style.display = 'none';
-    // Show the grid
-    gridContainer.style.display = 'grid';
     // Show the game board
     gameBoard.style.display = 'block';
-    // Show the "Back to Welcome Page" button on the game board
-    backToWelcomeButtonFromGame.style.display = 'block';
+    // Show the "Back to Welcome Page" button
+    backToWelcomeButtonFromGame.style.display = 'block'; // Ensure this button is visible
     // Initialize the game
     initGame();
 });
@@ -187,7 +180,11 @@ function renderGrid() {
 // Function to handle keyboard events
 // Handle user input (arrow keys)
 document.addEventListener('keydown', (event) => {
+    // Check if the pressed key is an arrow key
     if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+        // Prevent default behavior for arrow keys
+        event.preventDefault();
+
         if (event.key === 'ArrowUp') {
             moveUp();
         } else if (event.key === 'ArrowDown') {
