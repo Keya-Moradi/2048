@@ -1,98 +1,111 @@
+/* Set global font and layout for the body */
 body {
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #ffffff; /* Change to white for higher contrast */
+    font-family: sans-serif; /* Use a clean sans-serif font for readability */
+    display: flex; /* Use flexbox for alignment */
+    flex-direction: column; /* Align items in a column */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    min-height: 100vh; /* Make the body fill the full height of the viewport */
+    background-color: #ffffff; /* Set the background color to white */
 }
-
+  
+/* Style the welcome screen with centered text and a shadow */
 #welcome-screen {
-  text-align: center;
-  padding: 20px;
-  margin-bottom: 30px;
-  background-color: #333333; /* Darken for contrast */
-  color: #ffffff; /* White text for better readability */
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center the text */
+    padding: 20px; /* Add padding for spacing */
+    margin-bottom: 30px; /* Add margin at the bottom */
+    background-color: #333333; /* Dark background for contrast */
+    color: #ffffff; /* White text for readability */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
-
+  
+/* Style buttons and links on the welcome screen */
 #welcome-screen button,
 #welcome-screen a {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  width: 48%;
-  box-sizing: border-box;
-  margin: 0;
-  background-color: #4caf50; /* Dark green for better contrast */
-  color: #ffffff; /* White text */
-  text-decoration: none;
-  border-radius: 5px;
-  border: none;
-  text-align: center;
-  font-size: 16px;
-  line-height: 1.5;
+    display: inline-block; /* Make buttons inline-block for layout control */
+    margin-top: 10px; /* Add margin at the top */
+    padding: 10px 20px; /* Set padding */
+    width: 48%; /* Set width to 48% for two buttons side by side */
+    box-sizing: border-box; /* Include padding in the element's total width */
+    margin: 0; /* Reset default margin */
+    background-color: #4caf50; /* Use dark green for contrast */
+    color: #ffffff; /* White text for readability */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 5px; /* Round the corners */
+    border: none; /* Remove border */
+    text-align: center; /* Center text inside the button */
+    font-size: 16px; /* Set font size */
+    line-height: 1.5; /* Set line height */
 }
-
+  
+/* Style the game instructions popup */
 #game-instructions {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: left;
-  padding: 20px;
-  background-color: #ffffff; /* White background */
-  color: #000000; /* Black text */
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+    display: none; /* Hide by default */
+    position: absolute; /* Position over other content */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center using transform */
+    text-align: left; /* Align text to the left */
+    padding: 20px; /* Add padding for spacing */
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text for readability */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    z-index: 10; /* Ensure it's on top */
 }
-
+  
+/* Style the game board */
 #game-board {
-  background-color: #333333; /* Dark background for contrast */
-  color: #ffffff; /* White text for better readability */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: block; /* Ensure the game board is always visible */
+    background-color: #333333; /* Dark background for contrast */
+    color: #ffffff; /* White text for readability */
+    padding: 20px; /* Add padding for spacing */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
-
+  
+/* Style the grid container using CSS Grid */
 #grid-container {
-  display: none;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(4, 1fr); /* Create a 4-column grid */
+    grid-gap: 10px; /* Add space between grid items */
 }
-
+  
+/* Style individual tiles on the grid */
 .tile {
-  background-color: #ffffff; /* White tile background */
-  height: 80px;
-  width: 80px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  font-weight: bold;
-  color: #000000; /* Black text for contrast */
+    background-color: #ffffff; /* White background for tiles */
+    height: 80px; /* Set tile height */
+    width: 80px; /* Set tile width */
+    border-radius: 5px; /* Round the corners */
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center text vertically */
+    justify-content: center; /* Center text horizontally */
+    font-size: 30px; /* Set font size for numbers */
+    font-weight: bold; /* Make text bold */
+    color: #000000; /* Black text for contrast */
 }
-
+  
+/* Style win and lose messages */
 #win-message,
 #lose-message {
-  display: none;
-  position: absolute;
-  top: 14%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  padding: 20px;
-  background-color: rgba(0, 128, 0, 0.8); /* Semi-transparent green */
-  color: #ffffff; /* White text for contrast */
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 11;
-  font-size: 24px;
-  font-weight: bold;
+    display: none; /* Hide by default */
+    position: absolute; /* Position over other content */
+    top: 14%; /* Position near the top */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center using transform */
+    text-align: center; /* Center text */
+    padding: 20px; /* Add padding for spacing */
+    background-color: rgba(
+      0,
+      128,
+      0,
+      0.8
+    ); /* Semi-transparent green background */
+    color: #ffffff; /* White text for readability */
+    border-radius: 10px; /* Round the corners */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    z-index: 11; /* Ensure it's on top */
+    font-size: 24px; /* Set font size */
+    font-weight: bold; /* Make text bold */
 }

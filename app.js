@@ -1,21 +1,21 @@
-
-// Get references to important elements
-const welcomeScreen = document.getElementById('welcome-screen');
-const gameBoard = document.getElementById('game-board');
-const gridContainer = document.getElementById('grid-container');
-const scoreDisplay = document.getElementById('score');
-const restartButton = document.getElementById('restart-button');
-const instructionsButton = document.getElementById('show-instructions');
-const gameInstructions = document.getElementById('game-instructions');
-const backToWelcomeButtonFromInstructions = document.getElementById('back-to-welcome-from-instructions');
-const backToWelcomeButtonFromGame = document.getElementById('back-to-welcome-from-game');
+// Get references to important elements on the page
+const welcomeScreen = document.getElementById('welcome-screen'); // Welcome screen element
+const gameBoard = document.getElementById('game-board'); // Game board element
+const gridContainer = document.getElementById('grid-container'); // Grid container for tiles
+const scoreDisplay = document.getElementById('score'); // Score display element
+const restartButton = document.getElementById('restart-button'); // Restart button
+const instructionsButton = document.getElementById('show-instructions'); // Instructions button
+const gameInstructions = document.getElementById('game-instructions'); // Instructions element
+const backToWelcomeButtonFromInstructions = document.getElementById('back-to-welcome-from-instructions'); // Back button from instructions
+const backToWelcomeButtonFromGame = document.getElementById('back-to-welcome-from-game'); // Back button from game
 
 // Set up game variables
 let grid = []; // 2D array to represent the game board
-let score = 0;
+let score = 0; // Current score
 
-// Show/hide game instructions
+// Show/hide game instructions when the instructions button is clicked
 instructionsButton.addEventListener('click', () => {
+    // Toggle the display of the game instructions
     gameInstructions.style.display = (gameInstructions.style.display === 'none') ? 'block' : 'none';
     // Show/hide the "Back to Welcome Page" button in the instructions
     if (gameInstructions.style.display === 'block') {
@@ -39,32 +39,50 @@ restartButton.addEventListener('click', () => {
     initGame();
 });
 
-// Handle clicks on both buttons
+// Handle clicks on the "Back to Welcome Page" button from instructions
 backToWelcomeButtonFromInstructions.addEventListener('click', () => {
-    // Hide the game board and instructions
+    // Hide the game instructions
     gameInstructions.style.display = 'none';
 
     // Show the welcome screen
     welcomeScreen.style.display = 'block';
 
+    // Show the game board
+    gameBoard.style.display = 'block';
+
     // Hide both "Back to Welcome Page" buttons
     backToWelcomeButtonFromInstructions.style.display = 'none';
     backToWelcomeButtonFromGame.style.display = 'none';
+
+    // Hide win/lose messages
+    document.getElementById('win-message').style.display = 'none';
+    document.getElementById('lose-message').style.display = 'none';
 });
 
+// Handle clicks on the "Back to Welcome Page" button from the game
 backToWelcomeButtonFromGame.addEventListener('click', () => {
-    // Hide the game board and instructions
+    // Hide the game instructions
     gameInstructions.style.display = 'none';
 
     // Show the welcome screen
     welcomeScreen.style.display = 'block';
 
+    // Show the game board
+    gameBoard.style.display = 'block';
+
     // Hide both "Back to Welcome Page" buttons
     backToWelcomeButtonFromInstructions.style.display = 'none';
     backToWelcomeButtonFromGame.style.display = 'none';
+
+    // Reset game state
+    grid = [];
+    score = 0;
+
+    // Render the initial grid
+    renderGrid();
 });
 
-// Start the game when "Lets Play!" is clicked
+// Start the game when "Let's Play!" is clicked
 // Select the link with href="#game-board"
 const startButton = document.querySelector('#welcome-screen a[href="#game-board"]');
 startButton.addEventListener('click', () => {
@@ -72,6 +90,8 @@ startButton.addEventListener('click', () => {
     welcomeScreen.style.display = 'none';
     // Show the grid
     gridContainer.style.display = 'grid';
+    // Show the game board
+    gameBoard.style.display = 'block';
     // Show the "Back to Welcome Page" button on the game board
     backToWelcomeButtonFromGame.style.display = 'block';
     // Initialize the game
@@ -79,11 +99,13 @@ startButton.addEventListener('click', () => {
 });
 
 // Function to initialize the game:
-// 1. Create the 4x4 grid by initializing a 2D array called a grid with zeros.
+// 1. Create the 4x4 grid by initializing a 2D array called grid with zeros.
 // 2. Call the addTile function twice to add two initial tiles.
-// 3. Reset the score to 0 and update the score display.4. 
+// 3. Reset the score to 0 and update the score display.
 // 4. Call the renderGrid function to display the initial grid on the screen.
 function initGame() {
+    // Clear the grid and reset
+    grid = [];
     // Create the 4x4 grid
     for (let i = 0; i < 4; i++) {
         let row = [];
@@ -102,8 +124,9 @@ function initGame() {
     renderGrid();
 }
 
+// Function to update the score display
 function updateScoreDisplay() {
-    scoreDisplay.textContent = score;
+    scoreDisplay.textContent = score; // Update the score text content
 }
 
 // Function to add a new tile to the grid
@@ -151,12 +174,12 @@ function renderGrid() {
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j < 4; j++) {
             const tileValue = grid[i][j];
-            const tile = document.createElement('div');
-            tile.classList.add('tile');
+            const tile = document.createElement('div'); // Create a new div for the tile
+            tile.classList.add('tile'); // Add the tile class for styling
             if (tileValue > 0) {
-                tile.textContent = tileValue;
+                tile.textContent = tileValue; // Set the tile's text content if it's not empty
             }
-            gridContainer.appendChild(tile);
+            gridContainer.appendChild(tile); // Add the tile to the grid container
         }
     }
 }
@@ -164,22 +187,22 @@ function renderGrid() {
 // Function to handle keyboard events
 // Handle user input (arrow keys)
 document.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowUp') {
-        moveUp();
-    } else if (event.key === 'ArrowDown') {
-        moveDown();
-    } else if (event.key === 'ArrowLeft') {
-        moveLeft();
-    } else
-        if (event.key === 'ArrowRight') {
+    if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+        if (event.key === 'ArrowUp') {
+            moveUp();
+        } else if (event.key === 'ArrowDown') {
+            moveDown();
+        } else if (event.key === 'ArrowLeft') {
+            moveLeft();
+        } else if (event.key === 'ArrowRight') {
             moveRight();
-
         }
 
-    // After each move, check for win/lose conditions and add a new tile
-    checkWinLose();
-    addTile();
-    renderGrid(); // Re-render the grid to reflect the changes
+        // After each move, check for win/lose conditions and add a new tile
+        checkWinLose();
+        addTile();
+        renderGrid(); // Re-render the grid to reflect the changes
+    }
 });
 
 // Game Logic: 
@@ -192,12 +215,7 @@ document.addEventListener('keydown', (event) => {
 // A. Merging multiple tiles in a row
 // B. Preventing tiles from merging twice in the same move.
 
-// Example logic For moving UP
-// 1. Loop through each column and then each row (from top to bottom).
-// 2. If the current tile is empty, we look for the next non-empty tile below it and move it up.
-// 3. If the current tile can merge with the one below it (i.e., they have the same value), we double the value of the current tile, empty the cell below, and update the score.
-// 4. Keep track of whether any tiles moved using the moved flag.
-
+// Function to handle upward movement of tiles
 function moveUp() {
     let moved = false; // Flag to track if any tiles moved
     for (let col = 0; col < 4; col++) {
@@ -223,6 +241,7 @@ function moveUp() {
     return moved; // Return true if any tiles moved
 }
 
+// Function to handle downward movement of tiles
 function moveDown() {
     let moved = false;
 
@@ -250,6 +269,7 @@ function moveDown() {
     return moved;
 }
 
+// Function to handle leftward movement of tiles
 function moveLeft() {
     let moved = false;
 
@@ -277,6 +297,7 @@ function moveLeft() {
     return moved;
 }
 
+// Function to handle rightward movement of tiles
 function moveRight() {
     let moved = false;
 
@@ -338,4 +359,3 @@ function checkWinLose() {
     // If we reach this point, there are no empty cells or potential merges, so the player loses
     document.getElementById('lose-message').style.display = 'block'; // Show the lose message
 }
-

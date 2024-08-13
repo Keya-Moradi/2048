@@ -4,53 +4,87 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Keya's 2048 Game</title>
+    <!-- Link to the external CSS stylesheet for styling the page -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Welcome screen for the game with options to view instructions or start playing -->
     <div id="welcome-screen">
-        <h1>Welcome to Keya's 2048 Game!</h1>
-        <button id="show-instructions">Game Instructions</button> 
-        <a href="#game-board">Lets Play!</a>
-      </div>
-      
+      <h1>Welcome to Keya's 2048 Game!</h1>
+      <!-- Button to show game instructions -->
+      <button id="show-instructions">Game Instructions</button>
+      <!-- Link to navigate to the game board -->
+      <a href="#game-board">Lets Play!</a>
+    </div>
+
+    <!-- Section displaying game instructions, hidden by default -->
     <div id="game-instructions">
       <h2>How to Play 2048</h2>
-      <p>1. Click to select a tile, and then use the arrow keys [up, down, left, right] to merge it in the direction of an adjacent tile with a matching number to achieve a higher score.</p>
-      <p>2. If the number doesn’t match the direction the user selects, the tile trying to merge will shake left and right to signal to the user that the move is not possible.</p>
-      <p>3. If the tile is eligible to merge, the tiles will double their displayed value and merge into one</p>  
-      <p>4. If there are tiles beneath where they are merging, the tile will simply display the new value</p> 
-      <p>5. If there are no tiles beneath where they merge, the new combined tile will fall until it hits the floor or lands on top of an existing tile.</p>
-      <button id="back-to-welcome-from-instructions">Back to Welcome Page</button>
+      <p>
+        1. Click to select a tile, and then use the arrow keys [up, down, left,
+        right] to merge it in the direction of an adjacent tile with a matching
+        number to achieve a higher score.
+      </p>
+      <p>
+        2. If the number doesn’t match the direction the user selects, the tile
+        trying to merge will shake left and right to signal to the user that the
+        move is not possible.
+      </p>
+      <p>
+        3. If the tile is eligible to merge, the tiles will double their
+        displayed value and merge into one.
+      </p>
+      <p>
+        4. If there are tiles beneath where they are merging, the tile will
+        simply display the new value.
+      </p>
+      <p>
+        5. If there are no tiles beneath where they merge, the new combined tile
+        will fall until it hits the floor or lands on top of an existing tile.
+      </p>
+      <!-- Button to navigate back to the welcome page -->
+      <button id="back-to-welcome-from-instructions">
+        Back to Welcome Page
+      </button>
     </div>
+
+    <!-- Main game board where the 2048 game is played -->
     <div id="game-board">
-      <div id="win-message" style="display: none;">You Win!</div>
-      <div id="lose-message" style="display: none;">Game Over!</div>
-        <div id="grid-container">
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            <div class="tile"></div>
-            </div>
+      <!-- Messages displayed for win or lose conditions, hidden by default -->
+      <div id="win-message" style="display: none">You Win!</div>
+      <div id="lose-message" style="display: none">Game Over!</div>
+
+      <!-- Grid container for game tiles -->
+      <div id="grid-container">
+        <!-- 16 div elements representing each tile on the 4x4 grid -->
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+        <div class="tile"></div>
+      </div>
+
+      <!-- Display for current game score -->
       <div id="score-container">
         <p>Current Score: <span id="score">0</span></p>
       </div>
 
+      <!-- Button to restart the game -->
       <button id="restart-button">Restart</button>
-      <p></p>
+      <!-- Button to navigate back to the welcome page -->
       <button id="back-to-welcome-from-game">Back to Welcome Page</button>
     </div>
+    <!-- Link to external JavaScript file for game logic, loaded deferentially -->
     <script src="app.js" defer></script>
   </body>
 </html>
