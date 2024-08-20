@@ -40,14 +40,14 @@ A sliding puzzle game where the player moves numbered tiles on a grid to combine
 ### Technologies Used
 
 - HTML
-- CSS
+- CSS that also includes:
+  - CSS Flexbox for board layout
+  - CSS Grid for game board layout design
+  - Colors appropriate contrast that meet the WCAG 2.0 level AA standard
 - JavaScript
 - GitHub Pages
 - Visual Studio Code
 - GitHub
-- CSS Flexbox for board layout
-- CSS Grid for game board layout design
-- Colors appropriate contrast that meet the WCAG 2.0 level AA standard
 
 ### User Stories
 
@@ -129,6 +129,8 @@ As a user, I want to:
   - **Function `restartGame()`:**
     - Reset the game state to the initial conditions.
     - Re-render the game.
+
+---
 
 ### Next Steps
 
