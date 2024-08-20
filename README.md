@@ -4,7 +4,7 @@ A sliding puzzle game where the player moves numbered tiles on a grid to combine
 
 ## Keya's 2048 Game
 
-![Welcome Screen](https://raw.githubusercontent.com/keya-moradi/2048/main/.vscode/Images/welcome_screen.png
+![Welcome Screen](https://raw.githubusercontent.com/keya-moradi/2048/main/.vscode/Images/welcome.png
 )
 
 ## Background Information
@@ -43,6 +43,12 @@ A sliding puzzle game where the player moves numbered tiles on a grid to combine
 - HTML
 - CSS
 - JavaScript
+- GitHub Pages
+- Visual Studio Code
+- GitHub
+- CSS Flexbox for board layout
+- CSS Grid for game board layout design
+- Colors appropriate contrast that meet the WCAG 2.0 level AA standard
 
 ### User Stories
 
