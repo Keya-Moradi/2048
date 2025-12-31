@@ -1,111 +1,490 @@
-/* Set global font and layout for the body */
+/* ==================== GLOBAL STYLES ==================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  font-family: sans-serif; /* Use a clean sans-serif font for readability */
-  display: flex; /* Use flexbox for alignment */
-  flex-direction: column; /* Align items in a column */
-  align-items: center; /* Center items horizontally */
-  justify-content: center; /* Center items vertically */
-  min-height: 100vh; /* Make the body fill the full height of the viewport */
-  background-color: #ffffff; /* Set the background color to white */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  padding: 20px;
 }
 
-/* Style the welcome screen with centered text and a shadow */
+/* ==================== WELCOME SCREEN ==================== */
+
 #welcome-screen {
-  text-align: center; /* Center the text */
-  padding: 20px; /* Add padding for spacing */
-  margin-bottom: 30px; /* Add margin at the bottom */
-  background-color: #333333; /* Dark background for contrast */
-  color: #ffffff; /* White text for readability */
-  border-radius: 10px; /* Round the corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  text-align: center;
+  padding: 40px;
+  background-color: #333333;
+  color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  animation: fadeIn 0.5s ease-in;
 }
 
-/* Style buttons and links on the welcome screen */
+#welcome-screen h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+#welcome-screen .subtitle {
+  font-size: 1.1em;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
 #welcome-screen button,
 #welcome-screen a {
-  display: inline-block; /* Make buttons inline-block for layout control */
-  margin-top: 10px; /* Add margin at the top */
-  padding: 10px 20px; /* Set padding */
-  width: 48%; /* Set width to 48% for two buttons side by side */
-  box-sizing: border-box; /* Include padding in the element's total width */
-  margin: 0; /* Reset default margin */
-  background-color: #4caf50; /* Use dark green for contrast */
-  color: #ffffff; /* White text for readability */
-  text-decoration: none; /* Remove underline from links */
-  border-radius: 5px; /* Round the corners */
-  border: none; /* Remove border */
-  text-align: center; /* Center text inside the button */
-  font-size: 16px; /* Set font size */
-  line-height: 1.5; /* Set line height */
+  display: inline-block;
+  margin: 10px;
+  padding: 15px 30px;
+  min-width: 200px;
+  background-color: #4caf50;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-/* Style the game instructions popup */
+#welcome-screen button:hover,
+#welcome-screen a:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+}
+
+#welcome-screen button:active,
+#welcome-screen a:active {
+  transform: translateY(0);
+}
+
+/* ==================== GAME INSTRUCTIONS ==================== */
+
 #game-instructions {
-  display: none; /* Hide by default */
-  position: absolute; /* Position over other content */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Center using transform */
-  text-align: left; /* Align text to the left */
-  padding: 20px; /* Add padding for spacing */
-  background-color: #ffffff; /* White background */
-  color: #000000; /* Black text for readability */
-  border-radius: 10px; /* Round the corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-  z-index: 10; /* Ensure it's on top */
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 600px;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: left;
+  padding: 30px;
+  background-color: #ffffff;
+  color: #000000;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
 }
 
-/* Style the game board */
+#game-instructions h2 {
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+#game-instructions h3 {
+  color: #764ba2;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+#game-instructions ul,
+#game-instructions ol {
+  margin-left: 20px;
+  margin-bottom: 15px;
+}
+
+#game-instructions li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+#game-instructions button {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+#game-instructions button:hover {
+  background-color: #5568d3;
+}
+
+/* ==================== GAME BOARD ==================== */
+
 #game-board {
-  display: none; /* Initially hide the game board */
-  background-color: #333333; /* Dark background for contrast */
-  color: #ffffff; /* White text for readability */
-  padding: 20px; /* Add padding for spacing */
-  border-radius: 10px; /* Round the corners */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  background-color: #333333;
+  color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  animation: fadeIn 0.5s ease-in;
 }
 
-/* Style the grid container using CSS Grid */
+/* Score Displays */
+#score-displays {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.score-item {
+  text-align: center;
+  background-color: #444444;
+  padding: 10px 15px;
+  border-radius: 8px;
+  flex: 1;
+}
+
+.score-item label {
+  display: block;
+  font-size: 0.9em;
+  opacity: 0.8;
+  margin-bottom: 5px;
+}
+
+.score-item span {
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #4caf50;
+}
+
+/* Grid Container */
 #grid-container {
-  display: grid; /* Use grid layout */
-  grid-template-columns: repeat(4, 1fr); /* Create a 4-column grid */
-  grid-gap: 10px; /* Add space between grid items */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+  background-color: #444444;
+  padding: 10px;
+  border-radius: 10px;
+  touch-action: none; /* Prevents default touch behaviors */
 }
 
-/* Style individual tiles on the grid */
+/* Tiles */
 .tile {
-  background-color: #ffffff; /* White background for tiles */
-  height: 80px; /* Set tile height */
-  width: 80px; /* Set tile width */
-  border-radius: 5px; /* Round the corners */
-  display: flex; /* Use flexbox for alignment */
-  align-items: center; /* Center text vertically */
-  justify-content: center; /* Center text horizontally */
-  font-size: 30px; /* Set font size for numbers */
-  font-weight: bold; /* Make text bold */
-  color: #000000; /* Black text for contrast */
+  background-color: #cccccc;
+  height: 80px;
+  width: 80px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #000000;
+  transition: all 0.15s ease;
+  animation: tileAppear 0.2s ease;
 }
 
-/* Style win and lose messages */
+.tile:empty {
+  background-color: rgba(238, 228, 218, 0.35);
+}
+
+/* Tile color scheme based on value */
+.tile-2 { background-color: #eee4da; color: #776e65; }
+.tile-4 { background-color: #ede0c8; color: #776e65; }
+.tile-8 { background-color: #f2b179; color: #f9f6f2; }
+.tile-16 { background-color: #f59563; color: #f9f6f2; }
+.tile-32 { background-color: #f67c5f; color: #f9f6f2; }
+.tile-64 { background-color: #f65e3b; color: #f9f6f2; }
+.tile-128 { background-color: #edcf72; color: #f9f6f2; font-size: 24px; }
+.tile-256 { background-color: #edcc61; color: #f9f6f2; font-size: 24px; }
+.tile-512 { background-color: #edc850; color: #f9f6f2; font-size: 24px; }
+.tile-1024 { background-color: #edc53f; color: #f9f6f2; font-size: 20px; }
+.tile-2048 { background-color: #edc22e; color: #f9f6f2; font-size: 20px; box-shadow: 0 0 30px rgba(243, 215, 116, 0.8); }
+.tile-4096 { background-color: #3c3a32; color: #f9f6f2; font-size: 18px; }
+.tile-8192 { background-color: #3c3a32; color: #f9f6f2; font-size: 18px; }
+
+/* Controls */
+#controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+#controls button {
+  flex: 1;
+  min-width: 100px;
+  padding: 12px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#controls button:hover:not(:disabled) {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+#controls button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+#controls button:disabled {
+  background-color: #666666;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#undo-button {
+  background-color: #ff9800;
+}
+
+#undo-button:hover:not(:disabled) {
+  background-color: #e68900;
+}
+
+#continue-button {
+  background-color: #2196f3;
+}
+
+#continue-button:hover {
+  background-color: #0b7dda;
+}
+
+#restart-button,
+#back-to-welcome-from-game {
+  width: 100%;
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #667eea;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#restart-button:hover,
+#back-to-welcome-from-game:hover {
+  background-color: #5568d3;
+}
+
+/* Mobile hint */
+.mobile-hint {
+  text-align: center;
+  font-size: 0.9em;
+  opacity: 0.7;
+  margin-top: 15px;
+  display: none;
+}
+
+/* Win/Lose Messages */
 #win-message,
 #lose-message {
-  display: none; /* Hide by default */
-  position: absolute; /* Position over other content */
-  top: 14%; /* Position near the top */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Center using transform */
-  text-align: center; /* Center text */
-  padding: 20px; /* Add padding for spacing */
-  background-color: rgba(
-    0,
-    128,
-    0,
-    0.8
-  ); /* Semi-transparent green background */
-  color: #ffffff; /* White text for readability */
-  border-radius: 10px; /* Round the corners */
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-  z-index: 11; /* Ensure it's on top */
-  font-size: 24px; /* Set font size */
-  font-weight: bold; /* Make text bold */
+  display: none;
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  text-align: center;
+  padding: 30px 50px;
+  background-color: rgba(0, 128, 0, 0.95);
+  color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  font-size: 32px;
+  font-weight: bold;
+  animation: bounce 0.5s ease;
+}
+
+#lose-message {
+  background-color: rgba(220, 53, 69, 0.95);
+}
+
+/* ==================== ANIMATIONS ==================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -60%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes tileAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -10px);
+  }
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  #welcome-screen {
+    padding: 30px 20px;
+  }
+
+  #welcome-screen h1 {
+    font-size: 2em;
+  }
+
+  #welcome-screen button,
+  #welcome-screen a {
+    min-width: 150px;
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  #game-board {
+    padding: 20px 15px;
+    max-width: 100%;
+  }
+
+  #game-instructions {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  #score-displays {
+    flex-direction: column;
+  }
+
+  .tile {
+    height: 70px;
+    width: 70px;
+    font-size: 24px;
+  }
+
+  .tile-128,
+  .tile-256,
+  .tile-512 {
+    font-size: 20px;
+  }
+
+  .tile-1024,
+  .tile-2048 {
+    font-size: 18px;
+  }
+
+  .mobile-hint {
+    display: block;
+  }
+
+  #controls {
+    flex-direction: column;
+  }
+
+  #controls button {
+    width: 100%;
+  }
+
+  #win-message,
+  #lose-message {
+    font-size: 24px;
+    padding: 20px 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .tile {
+    height: 60px;
+    width: 60px;
+    font-size: 20px;
+  }
+
+  .tile-128,
+  .tile-256,
+  .tile-512 {
+    font-size: 18px;
+  }
+
+  .tile-1024,
+  .tile-2048 {
+    font-size: 16px;
+  }
+
+  #grid-container {
+    gap: 8px;
+    padding: 8px;
+  }
+}
+
+/* ==================== ACCESSIBILITY ==================== */
+
+/* Focus indicators */
+button:focus,
+a:focus {
+  outline: 3px solid #ffd700;
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .tile {
+    border: 2px solid #000000;
+  }
 }

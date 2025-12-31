@@ -3,23 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Keya's 2048 Game</title>
-    <!-- Link to the external CSS stylesheet for styling the page -->
+    <meta name="description" content="Play the classic 2048 sliding puzzle game. Combine tiles to reach 2048! Features include undo, mobile support, and high score tracking." />
+    <meta name="keywords" content="2048, game, puzzle, sliding tiles, brain teaser" />
+    <meta name="author" content="Keya Moradi" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://keya-moradi.github.io/2048/" />
+    <meta property="og:title" content="Keya's 2048 Game - Classic Sliding Puzzle" />
+    <meta property="og:description" content="Play the classic 2048 sliding puzzle game with enhanced features!" />
+    <meta property="og:image" content="https://keya-moradi.github.io/2048/.vscode/images/welcome.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://keya-moradi.github.io/2048/" />
+    <meta property="twitter:title" content="Keya's 2048 Game" />
+    <meta property="twitter:description" content="Play the classic 2048 sliding puzzle game with enhanced features!" />
+    <meta property="twitter:image" content="https://keya-moradi.github.io/2048/.vscode/images/welcome.png" />
+
+    <!-- Security -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data: https:;" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎮</text></svg>" />
+
+    <title>Keya's 2048 Game - Enhanced Edition</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Welcome screen for the game with options to view instructions or start playing -->
+    <!-- Welcome screen -->
     <div id="welcome-screen">
       <h1>Welcome to Keya's 2048 Game!</h1>
-      <!-- Button to show game instructions -->
-      <button id="show-instructions">Game Instructions</button>
-      <!-- Link to navigate to the game board -->
-      <a href="#game-board">Lets Play!</a>
+      <p class="subtitle">Enhanced Edition with Mobile Support & More Features</p>
+      <button id="show-instructions" aria-label="Show game instructions">Game Instructions</button>
+      <a href="#game-board" aria-label="Start playing the game">Let's Play!</a>
     </div>
 
-    <!-- Section displaying game instructions, hidden by default -->
-    <div id="game-instructions">
-      <h2>How to Play 2048</h2>
+    <!-- Game instructions overlay -->
+    <div id="game-instructions" role="dialog" aria-labelledby="instructions-title">
+      <h2 id="instructions-title">How to Play 2048</h2>
       <p>
         Welcome to the 2048 game! Your goal is to combine tiles with the same
         number to create a tile with the value of 2048.
@@ -42,11 +64,12 @@
           them and create a tile with the number 2048.
         </li>
         <li>
-          <strong>Controls</strong>: Use the <strong>arrow keys</strong> on your
+          <strong>Desktop Controls</strong>: Use the <strong>arrow keys</strong> on your
           keyboard to move tiles in the corresponding direction (up, down, left,
-          right).<br />
-          <em>Note</em>: Only the arrow keys are functional for gameplay; no
-          other keys, such as the space bar, affect the game.
+          right).
+        </li>
+        <li>
+          <strong>Mobile Controls</strong>: Swipe in any direction to move tiles.
         </li>
         <li>
           <strong>Merging Tiles</strong>: When two tiles with the same number
@@ -63,21 +86,27 @@
         <li>
           <strong>Winning the Game</strong>: The goal is to create a tile with
           the number 2048 through merging. When you achieve a tile of 2048, a
-          "You Win!" message will appear.
+          "You Win!" message will appear. You can continue playing to reach higher scores!
         </li>
         <li>
           <strong>Game Over</strong>: If the grid is full and no more merges can
           be made, the game will display a "Game Over!" message.
         </li>
       </ol>
+      <h3>New Features</h3>
+      <ul>
+        <li><strong>Undo</strong>: Take back your last move (up to 10 moves)</li>
+        <li><strong>High Score</strong>: Your best score is automatically saved</li>
+        <li><strong>Best Tile</strong>: Track the highest tile you've ever achieved</li>
+        <li><strong>Auto-Save</strong>: Game state is saved automatically</li>
+        <li><strong>Mobile Support</strong>: Play with touch gestures on mobile devices</li>
+        <li><strong>Continue After Win</strong>: Keep playing after reaching 2048!</li>
+      </ul>
       <h3>Additional Features</h3>
       <ul>
         <li>
           You can restart the game at any time by clicking the
-          <strong>Restart</strong> button, which will reset the grid and score
-        </li>
-        <li>
-          Hitting the <strong>Space Bar</strong> key on your keyboard can restart the game (mid-game), or escape the instructions page, or generate new tiles at the beginning of the game if you're not happy with the tiles. 
+          <strong>Restart</strong> button, which will reset the grid and score.
         </li>
         <li>
           To return to the welcome page, click the
@@ -85,51 +114,63 @@
         </li>
       </ul>
       <p>Enjoy playing and good luck reaching 2048!</p>
-      <!-- Button to navigate back to the welcome page -->
-      <button id="back-to-welcome-from-instructions">
+      <button id="back-to-welcome-from-instructions" aria-label="Return to welcome screen">
         Back to Welcome Page
       </button>
     </div>
 
-    <!-- Main game board where the 2048 game is played -->
-    <div id="game-board" style="display: none">
-      <!-- Messages displayed for win or lose conditions, hidden by default -->
-      <div id="win-message" style="display: none">You Win!</div>
-      <div id="lose-message" style="display: none">Game Over!</div>
-
-      <!-- Grid container for game tiles -->
-      <div id="grid-container">
-        <!-- 16 div elements representing each tile on the 4x4 grid -->
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
-        <div class="tile"></div>
+    <!-- Main game board -->
+    <div id="game-board" style="display: none" role="main" aria-label="2048 game board">
+      <!-- Win/lose messages -->
+      <div id="win-message" style="display: none" role="alert" aria-live="assertive">
+        🎉 You Win! 🎉
+      </div>
+      <div id="lose-message" style="display: none" role="alert" aria-live="assertive">
+        Game Over!
       </div>
 
-      <!-- Display for current game score -->
-      <div id="score-container">
-        <p>Current Score: <span id="score">0</span></p>
+      <!-- Score displays -->
+      <div id="score-displays">
+        <div class="score-item">
+          <label>Score</label>
+          <span id="score" aria-label="Current score">0</span>
+        </div>
+        <div class="score-item">
+          <label>High Score</label>
+          <span id="high-score" aria-label="High score">0</span>
+        </div>
+        <div class="score-item">
+          <label>Best Tile</label>
+          <span id="best-tile" aria-label="Best tile achieved">0</span>
+        </div>
       </div>
 
-      <!-- Button to restart the game -->
-      <button id="restart-button">Restart</button>
-      <!-- Button to navigate back to the welcome page -->
-      <br>
-      <br>
-      <button id="back-to-welcome-from-game">Back to Welcome Page</button>
+      <!-- Grid container (tiles generated dynamically) -->
+      <div id="grid-container" role="grid" aria-label="4x4 game grid">
+        <!-- Tiles will be generated by JavaScript -->
+      </div>
+
+      <!-- Game controls -->
+      <div id="controls">
+        <button id="undo-button" aria-label="Undo last move" disabled>
+          ↶ Undo
+        </button>
+        <button id="restart-button" aria-label="Restart game">
+          🔄 Restart
+        </button>
+        <button id="continue-button" style="display: none" aria-label="Continue playing after winning">
+          ➡️ Continue
+        </button>
+      </div>
+
+      <button id="back-to-welcome-from-game" aria-label="Return to welcome screen">
+        Back to Welcome Page
+      </button>
+
+      <!-- Mobile instructions -->
+      <p class="mobile-hint">💡 On mobile? Swipe to move tiles!</p>
     </div>
-    <!-- Link to external JavaScript file for game logic, loaded deferentially -->
+
     <script src="app.js" defer></script>
   </body>
 </html>
